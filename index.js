@@ -84,23 +84,29 @@ async function main() {
         return process.exit(1)
     }
 
-    let traced = ''
-    let jobIsRunning = true
+    let traced = {}
+    let finishedJobs = 0
 
-    log('Processing job: ' + jobs[0])
+    log('Processing job: ' + jobs.map(j => j.id))
 
-    while(jobIsRunning) {
-        let newTrace = await project.trace(jobs[0].id)
-        if (traced) {
-            let newOutput = newTrace.replace(traced, '')
-            if (newOutput) {
-                log(newOutput)
+    while(finishedJobs < jobs.length) {
+        jobs.forEach(async (j) => {
+            let newTrace = await project.trace(j.id)
+            if (traced[j.id]) {
+                let newOutput = newTrace.replace(traced[j.id], '')
+                if (newOutput) {
+                    log(newOutput)
+                }
+            } else if (newTrace) {
+                log(newTrace)
             }
-        } else if (newTrace) {
-            log(newTrace)
-        }
-        traced = newTrace
-        jobIsRunning = await project.jobIsRunning(jobs[0].id)
+            traced[j.id] = newTrace
+            const finished = await project.jobIsRunning(j.id)
+            if (finished === false) {
+                finishedJobs += 1
+            }
+        })
+
         await sleep(2000)
     }
 }
