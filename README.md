@@ -1,4 +1,5 @@
 # gitlab-ci-trace
+[![npm version](https://badge.fury.io/js/gitlab-ci-trace.svg)](https://www.npmjs.com/package/gitlab-ci-trace)
 
 Output the results of CI job traces into the console that has pushed the commit.
 This mimics the behaviour users of Heroku are used to where by a push to heroku will
