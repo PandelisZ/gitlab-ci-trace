@@ -1,0 +1,29 @@
+{
+  "name": "gitlab-ci-trace",
+  "version": "0.1.0",
+  "description": "Output the trace for a ci on push",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gitlab",
+    "gi",
+    "trace",
+    "git",
+    "githook",
+    "git-hook"
+  ],
+  "author": "Pandelis Zembashis <info@pandelis.me>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.4.2",
+    "cli-spinner": "^0.2.10",
+    "gitlab": "^4.5.1",
+    "simple-git": "^1.113.0"
+  },
+  "bin": {
+    "gitlab-ci-trace": "./index.js"
+  }
+}
