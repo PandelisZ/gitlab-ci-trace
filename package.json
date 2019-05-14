@@ -1,14 +1,14 @@
 {
   "name": "gitlab-ci-trace",
   "version": "0.1.0",
-  "description": "Output the trace for a ci on push",
+  "description": "Output the trace for a gitlab ci job on push",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "gitlab",
-    "gi",
+    "git",
     "trace",
     "git",
     "githook",
