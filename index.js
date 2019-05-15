@@ -43,7 +43,7 @@ class Project {
     }
 
     async jobsForHead() {
-        var spinner = new Spinner('%s Fetching jobs for: ' + chalk.green(this.project))
+        const spinner = new Spinner('%s Fetching jobs for: ' + chalk.green(this.project))
         spinner.setSpinnerString('|/-\\')
         spinner.start()
         const jobs = await this.api.Jobs.all(this.project, {scope: RUNNING_JOBS})
@@ -95,10 +95,10 @@ async function main() {
             if (traced[j.id]) {
                 let newOutput = newTrace.replace(traced[j.id], '')
                 if (newOutput) {
-                    log(newOutput)
+                    process.stdout.write(newOutput)
                 }
             } else if (newTrace) {
-                log(newTrace)
+                process.stdout.write(newTrace)
             }
             traced[j.id] = newTrace
             const finished = await project.jobIsRunning(j.id)
