@@ -12,6 +12,16 @@ trigger a build and the build status appears as part of the push status.
 npm install -g gitlab-ci-trace
 ```
 
+You'll also need to set an enviroment variable in your bash enviroment so that we can make API requests to GitLab.
+
+The token will need access to the API scope
+
+~/.bashrc
+```bash
+export GITLAB_TOKEN='IMATOKENWEEE'
+```
+
+
 Unfortunately there is no functionality within git itself for a post push hook which
 is what we would like to hook onto. Instead we need to use a git alias.
 
