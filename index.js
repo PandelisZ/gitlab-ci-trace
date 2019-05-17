@@ -85,11 +85,11 @@ async function main() {
     }
 
     let traced = {}
-    let finishedJobs = 0
+    let finishedJobs = {}
 
     log('Processing job: ' + jobs.map(j => j.id))
 
-    while(finishedJobs < jobs.length) {
+    while(Object.keys(finishedJobs).length < jobs.length) {
         jobs.forEach(async (j) => {
             let newTrace = await project.trace(j.id)
             if (traced[j.id]) {
@@ -101,9 +101,9 @@ async function main() {
                 process.stdout.write(newTrace)
             }
             traced[j.id] = newTrace
-            const finished = await project.jobIsRunning(j.id)
-            if (finished === false) {
-                finishedJobs += 1
+            const running = await project.jobIsRunning(j.id)
+            if (running === false) {
+                finishedJobs[j.id] = true
             }
         })
 

@@ -6,6 +6,13 @@ This mimics the behaviour users of Heroku are used to where by a push to heroku 
 trigger a build and the build status appears as part of the push status.
 
 
+## Features
+
+- Support for gitlab.com or custom deployments
+- Auto detects the GitLab host based on the ssh or https git url
+- Trace multiple simultaneous jobs
+- Auto detect the correct running jobs based on the HEAD commit hash
+
 ## Usage
 
 ```sh
@@ -27,8 +34,9 @@ is what we would like to hook onto. Instead we need to use a git alias.
 
 You can choose to name the alias whatever you want. I chose `git pusht` for push and trace.
 
-~/.gitconfig
+
 ```bash
+# ~/.gitconfig
 [alias]
 	pusht = !"git push $* && gitlab-ci-trace"
 ```
@@ -36,5 +44,8 @@ You can choose to name the alias whatever you want. I chose `git pusht` for push
 or
 
 ```sh
-$ git config --global alias.pusht '!git push $* && gitlab-ci-trace'
+git config --global alias.pusht '!git push $* && gitlab-ci-trace'
 ```
+
+You can also choose to just call the command directly after a push when you need
+to check on the status of a build.
