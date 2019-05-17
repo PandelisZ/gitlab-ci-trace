@@ -23,8 +23,9 @@ You'll also need to set an enviroment variable in your bash enviroment so that w
 
 The token will need access to the API scope
 
-~/.bashrc
+
 ```bash
+# ~/.bashrc
 export GITLAB_TOKEN='IMATOKENWEEE'
 ```
 
