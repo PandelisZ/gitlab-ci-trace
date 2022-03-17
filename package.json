@@ -21,7 +21,7 @@
     "chalk": "^2.4.2",
     "cli-spinner": "^0.2.10",
     "gitlab": "^4.5.1",
-    "simple-git": "^1.113.0"
+    "simple-git": "^3.3.0"
   },
   "bin": {
     "gitlab-ci-trace": "./index.js"
